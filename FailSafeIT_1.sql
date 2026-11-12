@@ -4,28 +4,28 @@ USE FailSafeIT1;
 GO
 
 CREATE TABLE [Kunder] (
-  [Organisationsnummer] VARCHAR(11),
-  [Företagsnamn] NVARCHAR(100),
-  [Epost] NVARCHAR(100),
-  [Telefonnummer] NVARCHAR(50),
+  [Organisationsnummer] VARCHAR(11) NOT NULL,
+  [Företagsnamn] NVARCHAR(100) NOT NULL,
+  [Epost] NVARCHAR(100) NOT NULL,
+  [Telefonnummer] NVARCHAR(50) NOT NULL,
   PRIMARY KEY ([Organisationsnummer])
 );
 
 CREATE TABLE [Konsulter] (
-  [Personnummer] VARCHAR(13),
-  [Namn] NVARCHAR(100),
-  [Timpris] INT,
-  [Specialitet] NVARCHAR(100),
+  [Personnummer] VARCHAR(13)  NOT NULL,
+  [Namn] NVARCHAR(100)  NOT NULL,
+  [Timpris] INT  NOT NULL,
+  [Specialitet] NVARCHAR(100)  NOT NULL,
   PRIMARY KEY ([Personnummer])
 );
 
 CREATE TABLE [Uppdrag] (
-  [UppdragsId] INT,
-  [Organisationsnummer] VARCHAR(11),
-  [Personnummer] VARCHAR(13),
-  [Startdatum] DATETIME2,
-  [Slutdatum] DATETIME2,
-  [Rollbeskrivning] NVARCHAR(1000),
+  [UppdragsId] INT  NOT NULL,
+  [Organisationsnummer] VARCHAR(11)  NOT NULL,
+  [Personnummer] VARCHAR(13)  NOT NULL,
+  [Startdatum] DATETIME2  NOT NULL,
+  [Slutdatum] DATETIME2  NOT NULL,
+  [Rollbeskrivning] NVARCHAR(1000)  NOT NULL,
   PRIMARY KEY ([UppdragsId]),
   CONSTRAINT [FK_Uppdrag_Organisationsnummer]
     FOREIGN KEY ([Organisationsnummer])
@@ -67,14 +67,16 @@ ON U.Organisationsnummer = K.Organisationsnummer
 INNER JOIN Konsulter Ko
 ON U.Personnummer = Ko.Personnummer
 ORDER BY K.Företagsnamn
-
+GO
+  
 SELECT K.Företagsnamn, COUNT(*) AS AntalUppdrag
 FROM Uppdrag U
 INNER JOIN Kunder K
 ON U.Organisationsnummer = K.Organisationsnummer
 GROUP BY K.Organisationsnummer, K.Företagsnamn
 ORDER BY K.Företagsnamn
-
+GO
+  
 UPDATE Konsulter
 SET Timpris = 1350
 WHERE Personnummer = '19950201-4561'
@@ -86,7 +88,8 @@ GO
 
 SELECT * 
 FROM Kunder 
-
+GO
+  
 DELETE FROM Kunder
 WHERE Organisationsnummer = '550101-0101'
 
