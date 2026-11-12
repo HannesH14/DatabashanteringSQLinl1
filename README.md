@@ -9,10 +9,10 @@ Tredje normalformen innebär att tabellen uppfyller båda första och andra form
 
 
  
-##  Sec: Om din databas nås via en publik webbapplikation, på vilket sätt skyddar du systemet så att en angripare inte kan skriva skadlig SQL-kod i ett inmatningsfält och radera hela din databas (SQL Injection)?
+## Sec: Om din databas nås via en publik webbapplikation, på vilket sätt skyddar du systemet så att en angripare inte kan skriva skadlig SQL-kod i ett inmatningsfält och radera hela din databas (SQL Injection)?
 
 För att skydda mot SQL Injection använder man parametriserade frågor. Det innebär att SQL kommandots struktur separeras från användarens indata. Skadlig text tolkas aldrig då som körbar kod.
 
-##Ops: Om FailSafe IT växer till tusentals kunder och miljontals uppdrag, vilken databasfunktion bör du implementera på tabellerna för att säkerställa att sökningar efter specifika organisationsnummer fortfarande går blixtsnabbt?
+## Ops: Om FailSafe IT växer till tusentals kunder och miljontals uppdrag, vilken databasfunktion bör du implementera på tabellerna för att säkerställa att sökningar efter specifika organisationsnummer fortfarande går blixtsnabbt?
 
 För att det fortfarande ska gå snabbt bör indexering användas. Det innebär att databasen kan hitta ett specifikt värde utan att behöva läsa igenom varje rad i tabeller. I mitt projekt används primärnycklar som i detta fall skapar ett unikt index vilket är ett clustered index
